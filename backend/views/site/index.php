@@ -4,6 +4,9 @@
 
 $this->title = 'Themes';
 ?>
+<head>
+<link href="/Shag/backend/views/site/my.css" rel="stylesheet">
+</head>
 <div class="site-index">
 
 <?php
@@ -28,10 +31,12 @@ if (!$mysql) {
 
        
         while ($product = mysqli_fetch_array($result)) {
+			echo"<div class='theme'> ";
             echo "<tr>";
             echo "<td><h1>" . $product['theme_name'] . '</h1></td><br>';
             echo "<td>" . $product['text'] . '</td>';
             echo "</tr>";
+			echo "</div>";
         }
         echo "</table>";
     } else {
