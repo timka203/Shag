@@ -1,14 +1,16 @@
 <?php
 
-/* @var $this yii\web\View */
-
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
 $this->title = 'Themes';
 ?>
 <head>
 <link href="/Shag/backend/views/site/my.css" rel="stylesheet">
 </head>
 <div class="site-index">
+<a class='btn btn-success' href='/Shag/backend/web/index.php/theme/create'>create theme</a>
 
+ <div class="space4"></div>
 <?php
 
 
@@ -17,7 +19,7 @@ $this->title = 'Themes';
 $hostname = 'localhost';
 $user     = 'user';
 $password = 'user';
-$db_name  = 'advanced_203';
+$db_name  = 'php';
 
 $mysql = mysqli_connect($hostname, $user, $password, $db_name);
 if (!$mysql) {
@@ -31,19 +33,19 @@ if (!$mysql) {
 
        
         while ($product = mysqli_fetch_array($result)) {
+
 			echo"<div class='theme'> ";
-            echo "<tr>";
-            echo "<td><h1>" . $product['theme_name'] . '</h1></td><br>';
-            echo "<td>" . $product['text'] . '</td>';
-            echo "</tr>";
-			echo "</div>";
+            echo "<h1>" . $product['theme_name'] . '</h1><br>';
+            echo "<p>" . $product['text'] . "</p></div>";
+           echo "<div class='theme-theme'>";
+		    echo " <a class='btn btn-success' href='/Shag/backend/web/index.php/theme/theme?id=". $product['ID'] . "'" ." > Go to Theme </a>" . "</div>";
+		
+		  
         }
-        echo "</table>";
     } else {
         echo $error;
     }
 }
-
     mysqli_close($mysql);
 
 ?>
